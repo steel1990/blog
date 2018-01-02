@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Steel.Liao's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前段时间去上海参加校园招聘会了，就把期间遇到的几个笔试和面试题跟大家分享一下。 证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数这个问题面试的时候没想出来，想了很久，后来一次在等地铁的时候突然想到了怎么证明。这个问题的证明其实是很简单的，既然是孪生素数之间的数，那么这个数必然是偶数了。因为这两个素数必然是奇数，而介于两个奇数之间的数肯定是偶数啦，即这个数能被2整除了，接下来就只需要">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几个笔试、面试题">
+<meta property="og:url" content="http://lbbs.me/2011/some-Interview-questions/index.html">
+<meta property="og:site_name" content="Steel.Liao&#39;s Blog">
+<meta property="og:description" content="前段时间去上海参加校园招聘会了，就把期间遇到的几个笔试和面试题跟大家分享一下。 证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数这个问题面试的时候没想出来，想了很久，后来一次在等地铁的时候突然想到了怎么证明。这个问题的证明其实是很简单的，既然是孪生素数之间的数，那么这个数必然是偶数了。因为这两个素数必然是奇数，而介于两个奇数之间的数肯定是偶数啦，即这个数能被2整除了，接下来就只需要">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-02T08:57:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几个笔试、面试题">
+<meta name="twitter:description" content="前段时间去上海参加校园招聘会了，就把期间遇到的几个笔试和面试题跟大家分享一下。 证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数这个问题面试的时候没想出来，想了很久，后来一次在等地铁的时候突然想到了怎么证明。这个问题的证明其实是很简单的，既然是孪生素数之间的数，那么这个数必然是偶数了。因为这两个素数必然是奇数，而介于两个奇数之间的数肯定是偶数啦，即这个数能被2整除了，接下来就只需要">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lbbs.me/2011/some-Interview-questions/"/>
+
+
+
+
+
+  <title>几个笔试、面试题 | Steel.Liao's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Steel.Liao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">清风朗月不用一钱买</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lbbs.me/2011/some-Interview-questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Steel.Liao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Steel.Liao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">几个笔试、面试题</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-11-01T21:16:00+08:00">
+                2011-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">programming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/some-Interview-questions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/some-Interview-questions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="字数统计">
+                  977
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前段时间去上海参加校园招聘会了，就把期间遇到的几个笔试和面试题跟大家分享一下。</p>
+<h3 id="证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数"><a href="#证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数" class="headerlink" title="证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数"></a>证明：如果一个数介于<a href="http://zh.wikipedia.org/wiki/%E5%AD%AA%E7%94%9F%E7%B4%A0%E6%95%B0" target="_blank" rel="noopener">孪生素数</a>之间且大于等于6，则这个数是6的倍数</h3><p>这个问题面试的时候没想出来，想了很久，后来一次在等地铁的时候突然想到了怎么证明。这个问题的证明其实是很简单的，既然是孪生素数之间的数，那么这个数必然是偶数了。因为这两个素数必然是奇数，而介于两个奇数之间的数肯定是偶数啦，即这个数能被2整除了，接下来就只需要证明这个数能被3整除就可以了。</p>
+<p>假设这个数是Y，两个素数分别是X,<code>Z(5&lt;=X&lt;Z)</code>，则有<code>Z-X=2</code>, <code>X=Y-1</code>, <code>Z=Y+1</code>，即X、Y、Z三个数是连续的。而三个连续的数中必有一个是3的倍数，又X、Z都是素数，即X、Z都不能被3整除，所以Y一定能被3整除，最终得出Y能被6整除，即Y是6的倍数。</p>
+<a id="more"></a>
+<h3 id="实现double-pow-double-x-int-y-函数"><a href="#实现double-pow-double-x-int-y-函数" class="headerlink" title="实现double pow(double x,int y)函数"></a>实现double pow(double x,int y)函数</h3><p>这个问题也很简单，不过细节很重要，有以下情况需要判断：<code>x=0, y=0, y&lt;0</code>。下面给代码了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">double</span> result = <span class="number">1.0</span>;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line">  <span class="keyword">if</span>(y &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; y;i++)&#123;</span><br><span class="line">      result *= x;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);<span class="comment">//终止程序</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    result = <span class="number">1</span> / <span class="built_in">pow</span>(x,-y);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然了，上面的实现可以换成非递归，然后大家可以想一想怎么实现<code>double pow(double x,double y)</code>函数。</p>
+<h3 id="输出一个字符串中字符的所有排序序列"><a href="#输出一个字符串中字符的所有排序序列" class="headerlink" title="输出一个字符串中字符的所有排序序列"></a>输出一个字符串中字符的所有排序序列</h3><p>这个问题也挺简单的，就是对字符重新组合。可以使用递归的思想来考虑，首先取出这个字符串的第一个字符，然后对剩下的字符串求所有排列，再将刚才的字符插入到每个字符串中的每一个位置(这句话不知道表达清楚了没)。例如：对字符串<code>abc</code>,先取出第一个字符a，然后对剩下的字符串<code>bc</code>，求其所有排列（<code>bc</code>,<code>cb</code>），然后将a插入到<code>bc</code>和<code>cb</code>中，得到<code>abc</code>，<code>bac</code>，<code>bca</code>，<code>acb</code>，<code>cab</code>，<code>cba</code>共六种排列。下面给出代码(JavaScirpt)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showAllSort</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getAllSort</span>(<span class="params">str</span>) </span>&#123; <span class="comment">//获取函数定义</span></span><br><span class="line">        <span class="keyword">if</span> (str.length &lt; = <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">            obj[str] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> obj;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> allSort = &#123;&#125;, <span class="comment">//保存当前str的所有排列</span></span><br><span class="line">            firstChar = str.slice(<span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">            <span class="comment">//获取移除第一个字符后的所有排列</span></span><br><span class="line">            subSort = getAllSort(str.slice(<span class="number">1</span>, str.length));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> substr <span class="keyword">in</span> subSort) &#123; <span class="comment">//插入第一个字符</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = substr.length; i &lt;= l; i++) &#123;</span><br><span class="line">                allSort[substr.slice(<span class="number">0</span>, i) + firstChar + substr.slice(i, l)] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> allSort;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> str == <span class="string">"string"</span> || str <span class="keyword">instanceof</span> <span class="built_in">String</span> || <span class="built_in">Object</span>.prototype.toString.call(str) == <span class="string">"[object String]"</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> allSort = getAllSort(str),</span><br><span class="line">            fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> s <span class="keyword">in</span> allSort) &#123;</span><br><span class="line">            <span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</span><br><span class="line">            p.innerHTML = s;</span><br><span class="line">            fragment.appendChild(p);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">"strSort"</span>).appendChild(fragment);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个实现中，使用了js对象的动态性，可以随时添加js对象的属性，即类似hashmap的特性，不会重复保存相同的排列。然后其中并没有对实现进行优化，没有对字符串进行分析（如有相同字符时的重复计算）。而递归实现也太耗费内存了，尤其是在浏览器中，很容易导致栈溢出等问题。还有在一个对象上添加很多属性应该也会引起性能问题，对于一个没有重复字符长度为10的字符串，其所有排列的个数是<code>10!=3628800</code>，太恐怖了！</p>
+<p>所以上面我给的方法都不是最好的，所以我也还要继续研究算法啦！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011/reverse-binary-number/" rel="next" title="一个数的二进制位反转">
+                <i class="fa fa-chevron-left"></i> 一个数的二进制位反转
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011/js-create-class-with-object-literal/" rel="prev" title="JavaScript通过对象字面量来创建类(型)">
+                JavaScript通过对象字面量来创建类(型) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Steel.Liao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/steel1990" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:i@lbbs.me" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数"><span class="nav-number">1.</span> <span class="nav-text">证明：如果一个数介于孪生素数之间且大于等于6，则这个数是6的倍数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现double-pow-double-x-int-y-函数"><span class="nav-number">2.</span> <span class="nav-text">实现double pow(double x,int y)函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出一个字符串中字符的所有排序序列"><span class="nav-number">3.</span> <span class="nav-text">输出一个字符串中字符的所有排序序列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2011 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Steel.Liao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://steel1990.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lbbs.me/2011/some-Interview-questions/';
+          this.page.identifier = '2011/some-Interview-questions/';
+          this.page.title = '几个笔试、面试题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://steel1990.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
