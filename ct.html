@@ -77,6 +77,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Steel.Liao's Blog" type="application/atom+xml" />
 
@@ -85,17 +87,17 @@
 
 
 
-<meta name="description" content="Steel.Liao&apos;s Blog">
+<meta name="description" content="ct              #main {             position: absolute;             width: 100%;             height: 100%;             top: 0;             left: 0;         }">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://lbbs.me/categories/index.html">
+<meta property="og:title" content="Steel.Liao&#39;s Blog">
+<meta property="og:url" content="http://lbbs.me/ct.html">
 <meta property="og:site_name" content="Steel.Liao&#39;s Blog">
-<meta property="og:description" content="Steel.Liao&apos;s Blog">
+<meta property="og:description" content="ct              #main {             position: absolute;             width: 100%;             height: 100%;             top: 0;             left: 0;         }">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-02T05:59:55.000Z">
+<meta property="og:updated_time" content="2018-01-05T09:09:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="Steel.Liao&apos;s Blog">
+<meta name="twitter:title" content="Steel.Liao&#39;s Blog">
+<meta name="twitter:description" content="ct              #main {             position: absolute;             width: 100%;             height: 100%;             top: 0;             left: 0;         }">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://lbbs.me/categories/"/>
+  <link rel="canonical" href="http://lbbs.me/ct.html"/>
 
 
 
 
 
-  <title>categories | Steel.Liao's Blog</title>
+  <title> | Steel.Liao's Blog</title>
   
 
 
@@ -251,7 +253,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">categories</h2>
+	<h2 class="post-title" itemprop="name headline"></h2>
 
 
 
@@ -263,14 +265,79 @@
       <div class="post-body han-init-context">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 2 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈/">杂谈</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ct</title>
+    <style>
+        #main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+    <div id="main"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+
+        (async () => {
+            const now = Date.now();
+            const start = now - 60 * 60 * 1000;
+            const res = await fetch(`http://ct.lbbs.me/?s=${start}&e=${now}`);
+            const data = await res.json();
+
+            var option = {
+                title: {
+                    text: 'test'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function (params) {
+                        params = params[0];
+                        var date = new Date(params.name);
+                        return date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' : ' + params.value[1].toPrecision(3) + '%';
+                    },
+                    axisPointer: {
+                        animation: false
+                    }
+                },
+                xAxis: {
+                    type: 'time',
+                    splitLine: {
+                        show: false
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine: {
+                        show: false
+                    }
+                },
+                series: [{
+                    name: 'hb',
+                    type: 'line',
+                    showSymbol: false,
+                    hoverAnimation: false,
+                    data: data.map(d => {
+                        return {
+                            name: d.ts,
+                            value: [d.ts, d.ratio * 100]
+                        };
+                    })
+                }]
+            };
+
+            myChart.setOption(option);
+        })();
+    </script>
+</body>
+</html>
         
       </div>
       
@@ -288,6 +355,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -557,6 +638,18 @@
       <script id="dsq-count-scr" src="https://steel-liaos-blog.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://lbbs.me/ct.html';
+          this.page.identifier = 'ct.html';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://steel-liaos-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
